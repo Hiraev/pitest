@@ -49,6 +49,7 @@ import org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator.Choice;
 import org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator;
+import org.pitest.mutationtest.engine.gregor.mutators.additional.StringMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.BigIntegerMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.NakedReceiverMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.RemoveIncrementsMutator;
@@ -175,6 +176,8 @@ public final class Mutator {
 
     researchMutators();
 
+    addAdditionalMutators();
+
     addGroup("REMOVE_SWITCH", RemoveSwitchMutator.makeMutators());
     addGroup("OLD_DEFAULTS", oldDefaults());
     addGroup("STRONGER", stronger());
@@ -281,6 +284,10 @@ public final class Mutator {
     add("UOI2", UOI2Mutator.UOI_2_MUTATOR);
     add("UOI3", UOI3Mutator.UOI_3_MUTATOR);
     add("UOI4", UOI4Mutator.UOI_4_MUTATOR);
+  }
+
+  private static void addAdditionalMutators() {
+    add("STRING_LITERAL_MUTATOR", StringMutator.STRING_MUTATOR);
   }
 
   public static Collection<MethodMutatorFactory> all() {
